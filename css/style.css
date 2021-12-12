@@ -1,0 +1,454 @@
+* {
+    font-family: Verdana, Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+body {
+	background:  url('../back.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    margin: 0px auto;
+     text-align: center;
+/*     background-color:#051704; */
+     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/*
+h1 {
+    font-weight: 50;
+    font-size: 3em;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  div.container {
+    background-color: #000000;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+  
+  div.screen {
+    background-color: #333;
+    border: 1px solid #333;
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+    margin: 25% auto;
+  }
+  
+  p.number {
+    font-size: 5em;
+    margin: 20% auto;
+    color: white;
+  }
+  
+  p.current {
+    padding: 10px;
+    color: lightblue;
+    letter-spacing: 2px;
+  }
+  
+  button, input {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-family: 'Helvetica Neue', arial;
+    font-weight: 50;
+    letter-spacing: 2px;
+    transition: .5s font-size;
+  }
+  
+  button:hover {
+    font-size: 1.4em;
+  }
+  */
+  
+  /******/
+  
+
+
+/* ======01==== INPUT DROOD SHAREEF  ======= */
+ 
+* { 
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.ipo {
+background: transparent;
+color:#fff;
+width:80%;
+height:50px;
+font-size:20px;
+padding:15px 8px;
+border:3px solid blue;
+border-radius:10px;
+box-shadow: 0px 1px 3px #222;
+outline:none;
+overflow:scroll;
+}
+
+.ipo:hover {
+box-shadow: 0px 5px 8px #000;
+background: transparent;
+color: #fff;
+border:3px solid #fff;
+font-weight:bold;
+outline:none;
+}
+
+/* ======02=== INPUT TASBIH COUNT  ========= */
+
+.ipc {
+background:transparent;
+color:#fff;
+width:80%;
+height:50px;
+font-size:20px;
+box-shadow: 0px 1px 3px #222;
+margin: 10px 0px;
+padding:15px 8px;
+border:3px solid blue;
+border-radius:10px;
+outline:none;
+overflow:scroll;
+}
+
+.ipc:hover {
+box-shadow: 0px 5px 8px #000;
+background: transparent;
+color: #fff;
+border:3px solid #fff;
+font-weight:bold;
+outline:none;
+}
+
+/* =====03=== FIRST MAIN BUTTON  ========== */
+
+.aam1 {
+width:40%;
+height:60px;
+margin-top:10px;
+font-size:24px;
+letter-spacing:1.9px;
+font-weight:400;
+color:#fff;
+background:blue;
+cursor:pointer;
+text-decoration:none;
+vertical-align:center;
+font-family:Arial,sans-serif;
+border:2px;
+user-select:none;
+border:2px solid blue;
+outline:none;
+box-shadow: 0px 1px 0px #222;
+}
+
+.aam1:hover {
+box-shadow: 0px 5px 8px #000;
+background: transparent;
+border:2px solid #fff;
+}
+
+.aam2 {
+width:40%;
+height:60px;
+margin-top:10px;
+margin-left:10px;
+font-size:24px;
+letter-spacing:1.9px;
+font-weight:400;
+color:#fff;
+background:blue;
+cursor:pointer;
+text-decoration:none;
+vertical-align:center;
+font-family:Arial,sans-serif;
+border:2px;
+user-select:none;
+border:2px solid blue;
+outline:none;
+box-shadow: 0px 1px 0px #222;
+}
+
+.aam2:hover {
+box-shadow: 0px 5px 8px #000;
+background: transparent;
+border:2px solid #fff;
+}
+#aac{
+    border:2px solid #FF1300;
+}
+
+
+/*--===04==== TEXT TOP ON COUNTER =======-- */
+
+.top {with:100%
+line-height:2;
+paddin-left:150px;
+text-align:center;
+font-weight:bold;
+font-size:30px;
+color: #fff;
+background:rgb(255,0,0,0.1);
+overflow: scroll;
+font-weight: bold;
+border:2px solid red;
+}
+
+
+/* ======05=== COUNTER MIDDLE TEXT   ======= */
+
+.aaa {
+width:100%;
+height:10%;
+color: #fff;
+background:rgb(255,0,0,0.1);
+border: 2px solid red;
+border-radius:5px;
+font-size:50px;
+font-weight:bold;
+text-align:center;
+}
+
+
+
+/* =====06== COUNTER MAIN BUTTOM TEXT  ====== */
+
+.aab {
+width:100%;
+height:42%;
+color: #fff;
+margin-top:4px;
+background:transparent;
+border: 2px solid #fff;
+border-radius:5px;
+font-size:200px;
+font-weight:bold;
+text-align:center;
+}
+
+
+/* =====07=== COUNTER BUTTON MAIN ========= */
+
+.aac {
+width:100%;margin-top:10px;font-size:24px;letter-spacing:1.9px;font-weight:400;color:#fff;cursor:pointer;text-decoration:none;vertical-align:center;font-family:Arial,sans-serif;border:2px;user-select:none;
+}
+
+/* ======08=== COUNTER REST BUTTON ========= */
+
+.aad {
+width:100%;height:40px;margin-top:10px;font-size:24px;letter-spacing:1.9px;font-weight:400;color:#fff;background:transparent;cursor:pointer;text-decoration:none;vertical-align:center;font-family:Arial,sans-serif;border:2px;user-select:none;
+}
+
+
+
+/* ========= MAIN HEADING TEXT ============ */
+
+.mh {color:#fff; margin-top:30px; padding-bottom:10px;font-weight:900;text-align:center;}
+
+.hht {color:#fff; margin-top:20px; padding-bottom:10px;font-weight:500;}
+
+.hht2 {color:#fff; margin-top:20px; padding-bottom:-10px;font-weight:500;}
+
+
+/* ====== COUNTER BACKGROUND ANIMATIIN ===== */
+
+
+
+
+
+.w3-container,.w3-panel {
+  padding: 0.01em 16px;
+}
+
+.w3-container:after,.w3-container:before {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.w3-modal {
+  z-index: 3;
+  display: none;
+  padding-top: 100px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+
+/* ============ ALERTS BACKGROUNDS ======== */
+
+.w3-modal-content {
+  margin: auto;
+  background-image: linear-gradient(to bottom right, red, yellow);
+  position: relative;
+  border:2px solid red;
+  padding: 0;
+  outline: 0;
+  width: 600px;
+}
+
+@media (max-width:600px) {
+  .w3-modal-content {
+    margin: 0 10px;
+    width: auto!important;
+  }
+
+  .w3-modal {
+    padding-top: 30px;
+  }
+
+
+@media (max-width:768px) {
+  .w3-modal-content {
+    width: 500px;
+  }
+
+  .w3-modal {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width:993px) {
+  .w3-modal-content {
+    width: 900px;
+  }
+
+
+
+.w3-button {
+  white-space: normal;
+}
+
+.w3-button {
+    width: 100%;
+  }
+}
+
+.w3-button:hover {
+  color: #fff!important;
+  background-color: #ccc!important;
+}
+
+.w3-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.w3-black,.w3-hover-black:hover {
+  color: #fff!important;
+  width:40%;
+  border-radius:3px;
+  background-color: #000!important;
+}
+
+.w3-display-topright {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cross {font-size:40px;}
+
+
+
+.fur{
+    
+    
+    color:white;
+    font-weight:1000;
+    font-size:110%;
+    
+}
+
+
+
+
+
+.ptxt{
+    
+    
+    color:white;
+    font-weight:1000;
+    font-size:110%;
+}
+
+.ff{
+    
+    
+    
+    margin-top:10%;
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom:10%;
+}
+
+.mtop{
+    
+    margin-top:30%;
+}
+
+
+
+/* ====== PERMISSION ALERTS BUTTONS ===== */
+
+.c{
+    
+    width:40%;
+    height:6%;
+    background-color:rgb(255,0,0,0.5);
+    border:1px solid yellow;
+    border-radius:5px;
+    padding:3%;
+    color:white;
+    cursor:pointer;
+    margin-right:10%;
+    margin-top:15px;
+}
+
+.r{
+    
+    width:40%;
+    height:6%;
+    background-color:rgb(0,255,0,0.8);
+    border-radius:5px;
+    border: 1px solid red;
+    cursor:pointer;
+    padding:3%;
+    color:white;
+    margin-top:15px;
+}
+
