@@ -5,6 +5,8 @@ var tesbihIndex = 0; // current index
 var SPECIAL_TESBIH = 1453;
 var SPECIAL_TESBIH_STRS = ["Subhanallah", "Elhamdulillah", "Allahuakbar"];
 var backClicked = false;
+var vibrateOn = false;
+var soundOn = false;
 
 window.onload = function() {
         // TODO:: Do your initialization job
@@ -12,35 +14,52 @@ window.onload = function() {
         // add eventListener for tizenhwkey
         document.addEventListener('tizenhwkey', function(e) {
             if (e.keyName == "back")
-            	
-            	if( document.getElementById("pl").style.display === 'none')
+            	if(document.getElementById("settingsDiv").style.display === 'block')
+            	{
+            		document.getElementById("settingsDiv").style.display = 'none';
+            		showPage(2);
+            	}
+            	else if( document.getElementById("addDiv").style.display === 'block' ||
+            			document.getElementById("tesbihPageDiv").style.display === 'block')
         		{
-            		showPage(0);
+            		showPage(2);
         		}
             	else
         		{
-            		try {
-                        tizen.application.getCurrentApplication().exit();
-                    } catch (ignore) {}
+            		if (confirm("Confirm exit?")) {
+            			try {
+                            tizen.application.getCurrentApplication().exit();
+                        } catch (ignore) {}
+            			} else {
+            			  
+            			}
         		}
                 
         });
 
 
-        document.getElementById("btn").addEventListener(
+        document.getElementById("addBtn").addEventListener(
             "click",
             function() {
                 addTesbih();
-                furqan_elahie_play_sounds();
+
                 //window.scrollTo(0,document.body.scrollHeight);
             }
         );
+        
+        document.getElementById("addBtn2").addEventListener(
+                "click",
+                function() {
+                	showPage(3);
+
+                    //window.scrollTo(0,document.body.scrollHeight);
+                }
+            );
 
         document.getElementById("incrementBtn").addEventListener(
             "click",
             function() {
                 incrementValue();
-                //furqan();
             }
         );
 
@@ -48,24 +67,16 @@ window.onload = function() {
                 "click",
                 function() {
                     incrementValue();
-                    //furqan();
                 }
-            );
+            );  
         
-        document.getElementById("myCheck2").addEventListener(
-            "click", myFunction2);
-        document.getElementById("myCheck").addEventListener(
-            "click", myFunction);
-        document.getElementById("myCheck3").addEventListener(
-            "click", myFunction3);
-        
-        document.getElementById("reset2").addEventListener(
+       /* document.getElementById("reset2").addEventListener(
                 "click",  function() {
                 	document.getElementById('id02').style.display='block';
                 	reset_and_all();
-                });
+                });*/
         
-        document.getElementById("cancelBtn").addEventListener(
+       /* document.getElementById("cancelBtn").addEventListener(
                 "click",  function() {
                 	document.getElementById('id02').style.display='none';
                 	reset_and_all();
@@ -99,23 +110,24 @@ window.onload = function() {
                 "click",  function() {
                 	document.getElementById('id03').style.display='block';reset_and_all();
                 });
-        
+        */
         document.getElementById("settingsBtn").addEventListener(
                 "click",  function() {
-                	document.getElementById('id01').style.display='block';
+                	document.getElementById('settingsDiv').style.display='block';
                 });
         
         document.getElementById("spanId").addEventListener(
                 "click",  function() {
-                	document.getElementById('id01').style.display='none';
+                	document.getElementById('settingsDiv').style.display='none';
                 	reset_and_all();
                 });
         
-        document.getElementById("btnTasbihs").addEventListener(
+        /*document.getElementById("btnTasbihs").addEventListener(
                 "click",  function() {
                 	readTesbihler();
                 	showPage(2);
                 });
+        */
         
         function tesbihClick()
         {
@@ -157,14 +169,16 @@ window.onload = function() {
     		}        	
         }
         
-        // 0:main, 1:tesbic counter, 2:tesbihlerim
+        // 0:main, 1:tesbic counter, 2:tesbihlerim, 3:add
         function showPage(pageNo) {
+        	 console.log("showPage pageNo: " + pageNo);
+        	 
         	if( pageNo == 0 ) // main
     		{
-        		/*document.getElementById("pl").style.display = "block";
+        		/*document.getElementById("addDiv").style.display = "block";
                 document.getElementById("e1").style.display = "block";
                 document.getElementById("goalCount").style.display = "block";
-                document.getElementById("fm").style.display = "none";
+                document.getElementById("tesbihPageDiv").style.display = "none";
                 document.getElementById("settingsBtn").style.display = "block";
                 document.getElementById("reset2").style.display = "none";
                 document.getElementById("reset").style.display = "none";
@@ -174,25 +188,38 @@ window.onload = function() {
     		}
         	else if( pageNo == 1 ) // counter
     		{
-        		document.getElementById("pl").style.display = "none";
+        		document.getElementById("addDiv").style.display = "none";
                 document.getElementById("e1").style.display = "none";
                 document.getElementById("goalCount").style.display = "none";
-                document.getElementById("fm").style.display = "block";
+                document.getElementById("tesbihPageDiv").style.display = "block";
                 document.getElementById("settingsBtn").style.display = "none";
-                document.getElementById("reset2").style.display = "block";
-                document.getElementById("reset").style.display = "block";
+                //document.getElementById("reset2").style.display = "block";
+                //document.getElementById("reset").style.display = "block";
                 document.getElementById("tesbihler").style.display = "none";
     		}
         	else if( pageNo == 2 ) // my tesbihler
     		{
-        		document.getElementById("pl").style.display = "none";
+        		readTesbihler();
+        		
+        		document.getElementById("addDiv").style.display = "none";
                 document.getElementById("e1").style.display = "none";
                 document.getElementById("goalCount").style.display = "none";
-                document.getElementById("fm").style.display = "none";
+                document.getElementById("tesbihPageDiv").style.display = "none";
                 document.getElementById("settingsBtn").style.display = "block";
-                document.getElementById("reset2").style.display = "none";
-                document.getElementById("reset").style.display = "none";
+                //document.getElementById("reset2").style.display = "none";
+                //document.getElementById("reset").style.display = "none";
                 document.getElementById("tesbihler").style.display = "block";
+    		}
+        	else if( pageNo == 3 ) // add page
+    		{
+        		document.getElementById("addDiv").style.display = "block";
+                document.getElementById("e1").style.display = "block";
+                document.getElementById("goalCount").style.display = "block";
+                document.getElementById("tesbihPageDiv").style.display = "none";
+                document.getElementById("settingsBtn").style.display = "none";
+                //document.getElementById("reset2").style.display = "none";
+                //document.getElementById("reset").style.display = "none";
+                document.getElementById("tesbihler").style.display = "none";
     		}
         }
         
@@ -280,60 +307,54 @@ window.onload = function() {
         
 
         function myFunction() {
-            var checkBox = document.getElementById("myCheck");
-            var text = document.getElementById("text");
-            if (checkBox.checked == true) {
-                //document.getElementById("aud").src = "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-46416/zapsplat_multimedia_button_click_005_53866.mp3?_=7";
-            } else {
-                doi();
-            }
+            var checkBox = document.getElementById("tesbihVibrate");
+            vibrateOn = checkBox.checked==true?1:0;
+            localStorage.setItem("vibrateOn", vibrateOn);
         }
 
         function myFunction2() {
-            var checkBox2 = document.getElementById("myCheck2");
+            var checkBox = document.getElementById("tesbihSound");
+            soundOn = checkBox.checked==true?1:0;
+            localStorage.setItem("soundOn", soundOn);
+        }
+   
 
-            if (checkBox2.checked == true) {
-               // document.getElementById("song").src = "https://pic.pikbest.com/00/62/04/63M888piCRKc.mp3";
-            } else {
-                doi2();
-            }
+        function makeAlerts(durationLong) {
+        	if(vibrateOn)
+        		{
+        		navigator.vibrate((durationLong==1) ? 200 : 50);
+        		}
+        	
+        	var pattern = 'BT_CONNECTED', type = 'TYPE_SOUND';
+        	var isSupported = tizen.feedback.isPatternSupported(pattern, type);
+        	var isSupportedStr = '';
+        	if (!isSupported) {
+        	    isSupportedStr = ' not';
+        	}
+        	console.log('pattern ' + pattern + ' is' + isSupportedStr + ' supported');
+        	if(isSupported&&soundOn)
+        		{
+        		tizen.feedback.play('CHARGERCONN');
+        		}
+        		
         }
         
-        function myFunction3() {
-            var checkBox3 = document.getElementById("myCheck3");
-
-            if (checkBox3.checked == true) {
-               // document.getElementById("re").src = "https://mobcup.net/d/uw3m47dv";
-            } else {
-                doi3();
-            }
-        }
-
-        function doi() {
-            //document.getElementById("aud").src = "https://www.dl.dropboxusercontent.com/s/q08zqsmldrvo0xa/Untitled%2062_360p%20%281%29.mp4?dl=0"
-        }
-
-        function doi2() {
-            //document.getElementById("song").src = "https://www.dl.dropboxusercontent.com/s/q08zqsmldrvo0xa/Untitled%2062_360p%20%281%29.mp4?dl=0"
-        }
-
-        function doi3() {
-           // document.getElementById("re").src = "https://www.dl.dropboxusercontent.com/s/q08zqsmldrvo0xa/Untitled%2062_360p%20%281%29.mp4?dl=0"
-        }
-
-
         function incrementValue() {
             var goalCount = parseInt(document.getElementById('goalCount').value);
 
             currentCount = parseInt(document.getElementById('number').value);
             if (currentCount < goalCount - 1) {
-
+            	
+            	makeAlerts(0);
+            	
             	currentCount++;
                 //value = isNaN(value) ? 0 : value; value++;
                 // if(value )
                  localStorage.setItem('currentCount_'+tesbihIndex, currentCount);
                 document.getElementById('number').value = currentCount;
             } else {
+            	makeAlerts(1);
+            	
                 buttonClick();
                 doit();
                 
@@ -387,9 +408,6 @@ window.onload = function() {
 
         }
 
-        function furqan_elahie_play_sounds() {
-            // document.getElementById("song").play();
-        }
 
         function reset_and_all() {
             //document.getElementById("re").play();
@@ -414,6 +432,28 @@ window.onload = function() {
         if(tesbihCount == null)
         	tesbihCount = 0;
    
-
+    	vibrateOn = localStorage.getItem("vibrateOn");
+        if(vibrateOn == null)
+        	vibrateOn = 0;
+                
+    	soundOn = localStorage.getItem("soundOn");
+        if(soundOn == null)
+        	soundOn = 0;
+        
+        var chkBox = document.getElementById("tesbihSound");
+        chkBox.addEventListener(
+                "click", myFunction2);
+        chkBox.checked = (soundOn==1);
+        
+        var chkBox2 = document.getElementById("tesbihVibrate");
+        chkBox2.addEventListener(
+                "click", myFunction);
+        chkBox2.checked = (vibrateOn==1);
+        
+        
         console.log("tesbih count: " + tesbihCount);
+        console.log("vibrateOn: " + vibrateOn);
+        console.log("soundOn: " + soundOn);
+        
+        readTesbihler();
     };

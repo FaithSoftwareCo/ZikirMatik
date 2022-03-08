@@ -12,7 +12,8 @@
 </head>
 
 <body>
-<div id="pl"> 
+
+<div id="addDiv" style="display:none;"> 
 
 	<!---===01==== INPUT DROOD SHAREEF  =====-->
 	<div class="hht">
@@ -25,18 +26,19 @@
 	<div class="hht2">
 	Tasbeeh Count
 	</div>
+	<center>
 	<input class="ipc" type="number" placeholder="33" id="goalCount" />
-
+</center>
 
 	<!---==03=== FIRST MAIN BUTTON  =======-->
-	<button class="aam1" id="btn">
+	<button class="aam1" id="addBtn">
 	Add
 	</button>
 	
-	<!---==03=== FIRST MAIN BUTTON  =======-->
-	<button class="aam2" id="btnTasbihs">
-	Tasbeehs
-	</button>
+<!-- 	<!---==03=== FIRST MAIN BUTTON  =======--> -->
+<!-- 	<button class="aam2" id="btnTasbihs"> -->
+<!-- 	Tasbeehs -->
+<!-- 	</button> -->
 </div>
 
 
@@ -50,16 +52,7 @@ border:1px solid #fff;
 margin-top:15px;">
 </p>
 </center>
-<form style="display:none;" id="fm">
-
-<!--===04==== TEXT TOP ON COUNTER ========-->
-<!-- <div style="background:transparent;
-border:2px solid red;
-border-radius:5px;
-margin-top:0px;
-line-height:1.5" align="center" class="top" id="lap1">
-</div> -->
-<hr>
+<form style="display:none;" id="tesbihPageDiv">
 
 <!---===05=== COUNTER MIDDLE TEXT   =======-->
 <input class="aaa" type="text" id="lapCount" value="0" disabled />
@@ -83,7 +76,7 @@ border-radius:5px;" class="aac" type="button" id="incrementBtn" value="Increment
 <!-- ======= Settings And Alerts ====== -->
 <div style="border-radius:25px" class="w3-container">
 
-<div id="id01"  class="w3-modal">
+<div id="settingsDiv"  class="w3-modal">
 <div style="border-radius:10px" class="w3-modal-content furqanmfe">
 
 <div class="w3-container">
@@ -95,23 +88,18 @@ border-radius:5px;" class="aac" type="button" id="incrementBtn" value="Increment
 
 <div style="margin:27%">
 <label class="fur" for="myCheck2">
-Error Sound
+Sound
 </label>
 
-<input class="switch-input" checked  type="checkbox" id="myCheck2">
+<input class="switch-input" checked  type="checkbox" id="tesbihSound">
 
 <label class="fur" for="myCheck">
-Tasbih Sound 
+Vibrate 
 </label> 
 
-<input checked  type="checkbox" id="myCheck"">
+<input checked  type="checkbox" id="tesbihVibrate">
 <br>
-<label class="fur" for="myCheck3">
-Reset Sounds
-</label> 
 
-<input checked  type="checkbox" id="myCheck3"">
-<br>
 
 <p id="text" style="display:none">
 Checkbox is CHECKED!
@@ -137,24 +125,21 @@ Checkbox is CHECKED!
 Are You Sure You Want To Reset The Counted Tasbeeh ?
 </p>
 
-<center>
+<!-- <center> -->
 
-<button id="cancelBtn" class="c">
-Cancel
-</button> 
+<!-- <button id="cancelBtn" class="c"> -->
+<!-- Cancel -->
+<!-- </button>  -->
 
-<button id="resetBtn" class="r">
-Reset
-</button>
-</center>
+<!-- <button id="resetBtn" class="r"> -->
+<!-- Reset -->
+<!-- </button> -->
+<!-- </center> -->
 </div>
 </div>
 </div>
 </div>
 </div>
-
-
-
 
 
 <!--===== PERMISSION ALERT 2 ========= -->
@@ -174,11 +159,11 @@ Are You Sure You Want To Reset  The All Counted Tasbeeh ?
 
 <center></center> 
 
-<button id="cancelAll" class="c">Cancel</button> 
+<!-- <button id="cancelAll" class="c">Cancel</button>  -->
 
-<button id="resetAll"  class="r">
-Reset All
-</button>
+<!-- <button id="resetAll"  class="r"> -->
+<!-- Reset All -->
+<!-- </button> -->
 
 </center>
 </div>
@@ -189,40 +174,46 @@ Reset All
 
 
 <!---===08=== COUNTER REST BUTTONS 1=======-->
-<button style="height:7%;
-display:none;
-border:2px solid red;
-border-radius:5px;
-margin-top:10px;" id="reset2" class="aad">
-Reset 
-</button>
+<!-- <button style="height:7%; -->
+/* display:none; */
+/* border:2px solid red; */
+/* border-radius:5px; */
+<!-- margin-top:10px;" id="reset2" class="aad"> -->
+<!-- Reset -->
+<!-- </button> -->
 
 
-<!---===08=== COUNTER REST BUTTONS 2=======-->
-<button style="height:7%;
-display:none;
-border:2px solid red;
-border-radius:5px;" id="reset" class="aad">
-Reset All
-</button>
+<!-- <!---===08=== COUNTER REST BUTTONS 2=======-->
+<!-- <button style="height:7%; -->
+<!--  display:none;  -->
+<!-- border:2px solid red;  -->
+<!-- border-radius:5px;" id="reset" class="aad"> -->
+<!-- Reset All -->
+<!-- </button> -->
 
 
 
-<div id="tesbihler"  style="display:none;">
+<div id="tesbihler"  >
 <div class="hht">
 	My Tasbeehs
 </div>
 <div id="tesbihlerContent"></div>
 <!-- <button id="tesbih0" class="aad">33x3</button> -->
 
+<!---==03=== FIRST MAIN BUTTON  =======-->
+	<button class="aam1" id="addBtn2">
+	Add
+	</button>
+
+	<!-- ========== SETTING BUTTON ======== -->
+<center>
+<br>
+<button id="settingsBtn" class="aam1">Settings</button>
+</center>
 </div>
 
 
-<!-- ========== SETTING BUTTON ======== -->
-<center>
-<br>
-<button id="settingsBtn" class="w3-button w3-black">Settings</button>
-</center>
+
 
 <!-- 
 <audio id="aud" src="https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-46416/zapsplat_multimedia_button_click_005_53866.mp3?_=7"/>

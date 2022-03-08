@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/ZikirMatik" version="1.0.0" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/ZikrCounter" version="1.0.0" viewmodes="maximized">
     <tizen:application id="QmXsfYBi5l.ZikirMatik" package="QmXsfYBi5l" required_version="2.3.2"/>
+    <author email="faith.software@gmail.com">faith software</author>
     <content src="index.html"/>
+    <description>Zikr Tasbih Counter app is a digital version of tasbih / tasbeeh that helps muslims dzikr activity.</description>
+    <description xml:lang="en-gb">Zikr Tasbih Counter app is a digital version of tasbih / tasbeeh that helps muslims dzikr activity.</description>
+    <description xml:lang="en">Zikr Tasbih Counter app is a digital version of tasbih / tasbeeh that helps muslims dzikr activity.</description>
+    <description xml:lang="tr-tr">ZikirMatik bir tesbih uygulamasıdır.</description>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
-    <name>ZikirMatik</name>
+    <name>Zikr Tasbih Counter</name>
+    <name xml:lang="en-gb">Zikr Tasbih Counter</name>
+    <name xml:lang="en">Zikr Tasbih Counter</name>
+    <name xml:lang="tr-tr">Zikir Tesbih</name>
     <tizen:profile name="wearable"/>
     <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
 </widget>
