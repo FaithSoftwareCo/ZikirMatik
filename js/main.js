@@ -306,13 +306,13 @@ window.onload = function() {
         }
         
 
-        function myFunction() {
+        function tesbihVibrateClicked() {
             var checkBox = document.getElementById("tesbihVibrate");
             vibrateOn = checkBox.checked==true?1:0;
             localStorage.setItem("vibrateOn", vibrateOn);
         }
 
-        function myFunction2() {
+        function tesbihSoundClicked2() {
             var checkBox = document.getElementById("tesbihSound");
             soundOn = checkBox.checked==true?1:0;
             localStorage.setItem("soundOn", soundOn);
@@ -442,12 +442,12 @@ window.onload = function() {
         
         var chkBox = document.getElementById("tesbihSound");
         chkBox.addEventListener(
-                "click", myFunction2);
+                "click", tesbihSoundClicked);
         chkBox.checked = (soundOn==1);
         
         var chkBox2 = document.getElementById("tesbihVibrate");
         chkBox2.addEventListener(
-                "click", myFunction);
+                "click", tesbihVibrateClicked);
         chkBox2.checked = (vibrateOn==1);
         
         
