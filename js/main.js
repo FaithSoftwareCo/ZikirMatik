@@ -310,22 +310,29 @@ window.onload = function() {
             var checkBox = document.getElementById("tesbihVibrate");
             vibrateOn = checkBox.checked==true?1:0;
             localStorage.setItem("vibrateOn", vibrateOn);
+            
+            console.log("tesbihVibrateClicked : " + vibrateOn);
         }
 
-        function tesbihSoundClicked2() {
+        function tesbihSoundClicked() {
             var checkBox = document.getElementById("tesbihSound");
             soundOn = checkBox.checked==true?1:0;
             localStorage.setItem("soundOn", soundOn);
+            
+            console.log("tesbihSoundClicked : " + soundOn);
         }
    
 
         function makeAlerts(durationLong) {
+        	
+        	 console.log("makeAlerts :  vibrateOn" + vibrateOn + " soundOn:" + soundOn);
+        	 
         	if(vibrateOn)
         		{
         		navigator.vibrate((durationLong==1) ? 200 : 50);
         		}
         	
-        	var pattern = 'BT_CONNECTED', type = 'TYPE_SOUND';
+        	var pattern = 'KEY_SHARP', type = 'TYPE_SOUND';
         	var isSupported = tizen.feedback.isPatternSupported(pattern, type);
         	var isSupportedStr = '';
         	if (!isSupported) {
@@ -334,7 +341,7 @@ window.onload = function() {
         	console.log('pattern ' + pattern + ' is' + isSupportedStr + ' supported');
         	if(isSupported&&soundOn)
         		{
-        		tizen.feedback.play('CHARGERCONN');
+        		tizen.feedback.play(pattern, type);
         		}
         		
         }
