@@ -201,6 +201,8 @@ window.onload = function() {
     		{
         		readTesbihler();
         		
+        		document.getElementById("tesbihler").style.display = "block";
+        		
         		document.getElementById("addDiv").style.display = "none";
                 document.getElementById("e1").style.display = "none";
                 document.getElementById("goalCount").style.display = "none";
@@ -208,7 +210,7 @@ window.onload = function() {
                 document.getElementById("settingsBtn").style.display = "block";
                 //document.getElementById("reset2").style.display = "none";
                 //document.getElementById("reset").style.display = "none";
-                document.getElementById("tesbihler").style.display = "block";
+                
     		}
         	else if( pageNo == 3 ) // add page
     		{
