@@ -10,7 +10,6 @@ body {
         background-size: cover;
     margin: 0px auto;
      text-align: center;
-/*     background-color:#051704; */
      -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -299,12 +298,21 @@ width:100%;height:40px;margin-top:10px;font-size:24px;letter-spacing:1.9px;font-
   background-color: rgba(0,0,0,0.4);
 }
 
-.tesbihlerc
+.backFull
 {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+}
+
+.backFull2
+{
+  padding-top:10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80vh;
 }
 
 

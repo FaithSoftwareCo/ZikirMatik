@@ -252,7 +252,14 @@ window.onload = function() {
                 
                 if (yu < 0) {
                     document.getElementById("e1").style.display = "block";
-                    document.getElementById("e1").innerText = "Number Can't Be Negative"
+                    document.getElementById("e1").innerText = "Number Can't Be Negative";
+                    return;
+                }
+                
+                if(tesbihCount>1)
+                {
+                	document.getElementById("e1").style.display = "block";
+                    document.getElementById("e1").innerText = "Full Version Required";
                     return;
                 }
 
