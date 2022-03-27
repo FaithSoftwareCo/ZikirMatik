@@ -131,44 +131,50 @@ window.onload = function() {
                 });
         */
         
-        function tesbihClick()
+        function tesbihClick(e)
         {
-        	 tesbihIndex = this.getAttribute("index");
-        	
+        	tesbihIndex = e.currentTarget.myParam; //;
+        		
+        	 //tesbihIndex = e.getAttribute("index");
+        	//tesbihIndex = tesbihIndexArg;
         	 showTesbihPage(tesbihIndex);
         }
         
-        var timer;
-        var istrue = false;
+        var timer = null;
         var delay = 1000; // how much long u have to hold click in MS
 
         function tesbihClickPressed(e)
         {
-           istrue = true;
            e.preventDefault();
            //alert("func");
            console.log("deneme");
-           timer = setTimeout(function(){ deleteTesbihScreen(e);},delay);
+           timer = setTimeout(function(){ alert("Delete tasbih?");/*deleteTesbihScreen(e);*/},delay);
           // Incase if you want to prevent Default functionality on mouse down
           if (e.preventDefault) 
           { 
              e.preventDefault();
-          } else {
+          }
+          else {
              e.returnValue = false; 
           }
         }
 
-        function tesbihClickReleased()
+        function tesbihClickReleased(e)
         {
-        	if(timer)
+        	return ;
+        	
+        	if(timer) // demek ki timer expire etmemis
 	   		 {
-	       		 clearTimeout(timer);
-	       		 timer = null;
+           		 clearTimeout(timer);
+           		 timer = null;
+       		 
+           		 tesbihClick(e);
 	       		 return;
 	   		 }
-        	
-        	
-        	tesbihClick();
+        	else
+    		{
+        		 
+        	}
         }
         
         function deleteTesbihScreen(e)
@@ -179,9 +185,32 @@ window.onload = function() {
         		 timer = null;
     		 }
            	  
-        	alert("Delete tasbih?");
+        	 alert("Delete tasbih?");
         }
         
+        
+        var mouseIsDown = false;
+
+        function mouseDown() {
+        	 console.log("deneme1");
+          mouseIsDown = true;
+          setTimeout(function() {
+            if(mouseIsDown) {
+              // mouse was held down for > 2 seconds
+            	 console.log("deneme2");
+            	alert("Delete tasbih?");
+            }
+          }, 2000);
+        }
+
+        function mouseUp() {
+        	 console.log("deneme3");
+          mouseIsDown = false;
+        }
+
+        function execMouseDown() { 
+        	alert("Delete tasbih?");
+        }
         
         function readTesbihler()
         {
@@ -194,10 +223,11 @@ window.onload = function() {
         	buttonTextEl.className = "aad";
         	buttonTextEl.innerText = '33 x 3';
         	buttonTextEl.setAttribute("index", SPECIAL_TESBIH);
+        	buttonTextEl.myParam = SPECIAL_TESBIH;
         	//buttonTextEl.addEventListener("touchstart", func); 
         	//buttonTextEl.addEventListener("touchend", revert); 
-        	buttonTextEl.addEventListener("mousedown", tesbihClickPressed); 
-        	buttonTextEl.addEventListener("mouseup", tesbihClickReleased); 
+        	buttonTextEl.addEventListener("mousedown", mouseDown); 
+        	buttonTextEl.addEventListener("mouseup", mouseUp); 
         	
         	myNode.appendChild(buttonTextEl);
         	
