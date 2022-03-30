@@ -32,9 +32,9 @@ window.onload = function() {
             			try {
                             tizen.application.getCurrentApplication().exit();
                         } catch (ignore) {}
-            			} else {
+        			} else {
             			  
-            			}
+        			}
         		}
                 
         });
@@ -72,47 +72,6 @@ window.onload = function() {
                 }
             );  
         
-       /* document.getElementById("reset2").addEventListener(
-                "click",  function() {
-                	document.getElementById('id02').style.display='block';
-                	reset_and_all();
-                });*/
-        
-       /* document.getElementById("cancelBtn").addEventListener(
-                "click",  function() {
-                	document.getElementById('id02').style.display='none';
-                	reset_and_all();
-                });
-        
-        document.getElementById("resetBtn").addEventListener(
-                "click",  function() {
-                	document.getElementById('id02').style.display='none';
-                	reset_and_all();resetone();
-                });
-        
-        document.getElementById("cancelAll").addEventListener(
-                "click",  function() {
-                	document.getElementById('id03').style.display='none';
-                	reset_and_all();
-                }); 
-        
-        document.getElementById("resetAll").addEventListener(
-                "click",  function() {
-                	document.getElementById('id03').style.display='none';
-                	reset_and_all();
-                	resetall();
-                }); 
-        
-        document.getElementById("reset2").addEventListener(
-                "click",  function() {
-                	document.getElementById('id02').style.display='block';reset_and_all();
-                }); 
-        
-        document.getElementById("reset").addEventListener(
-                "click",  function() {
-                	document.getElementById('id03').style.display='block';reset_and_all();
-                });
-        */
         document.getElementById("settingsBtn").addEventListener(
                 "click",  function() {
                 	document.getElementById('settingsDiv').style.display='block';
@@ -124,18 +83,28 @@ window.onload = function() {
                 	reset_and_all();
                 });
         
-        /*document.getElementById("btnTasbihs").addEventListener(
-                "click",  function() {
-                	readTesbihler();
-                	showPage(2);
-                });
-        */
+        document.addEventListener('rotarydetent', rotaryDetentHandler);	
         
-        function tesbihClick()
+        function rotaryDetentHandler (e) {
+            var direction = e.detail.direction;
+
+        	if (direction === "CW" || direction === "CCW") {
+        		var incBtn = document.getElementById("incrementBtn");
+        		if(!isHidden(incBtn))
+        			incBtn.click();
+        	}
+        }
+        
+        function tesbihClick(tesbihIndex)
         {
-        	 tesbihIndex = this.getAttribute("index");
-        	
+        	 console.log("tesbihClick: " + tesbihIndex);
+        	 //tesbihIndex = this.getAttribute("index");
         	 showTesbihPage(tesbihIndex);
+        }
+        
+     // Where el is the DOM element you'd like to test for visibility
+        function isHidden(el) {
+            return (el.offsetParent === null)
         }
         
         var timer;
@@ -145,30 +114,31 @@ window.onload = function() {
         function tesbihClickPressed(e)
         {
            istrue = true;
-           e.preventDefault();
+           tesbihIndex = this.getAttribute("index");
+           //e.preventDefault();
            //alert("func");
-           console.log("deneme");
+          
            timer = setTimeout(function(){ deleteTesbihScreen(e);},delay);
           // Incase if you want to prevent Default functionality on mouse down
-          if (e.preventDefault) 
+          /*if (e.preventDefault) 
           { 
              e.preventDefault();
           } else {
              e.returnValue = false; 
-          }
+          }*/
         }
 
         function tesbihClickReleased()
         {
-        	if(timer)
+        	if(timer) // demek ki timer expire etmemis
 	   		 {
 	       		 clearTimeout(timer);
 	       		 timer = null;
+	       		 
+	       		 tesbihClick(tesbihIndex);
+	       		
 	       		 return;
 	   		 }
-        	
-        	
-        	tesbihClick();
         }
         
         function deleteTesbihScreen(e)
@@ -179,7 +149,29 @@ window.onload = function() {
         		 timer = null;
     		 }
            	  
-        	alert("Delete tasbih?");
+        	 if (confirm('Delete tasbih?')) {
+        		  // delete it!
+        		  console.log('Thing was saved to the database.');
+        		  if(tesbihIndex==SPECIAL_TESBIH)
+    			  {
+        			  alert("This tasbeh\nis predefined.\nNot deleted!");
+    			  }
+        		  else
+    			  {
+        			  localStorage.removeItem('name_'+tesbihIndex);
+                      localStorage.removeItem('goalCount_'+tesbihIndex);
+                      localStorage.removeItem('lapCount_'+tesbihIndex);
+                      localStorage.removeItem('currentCount_'+tesbihIndex);
+                      tesbihCount--;
+                      localStorage.setItem('tesbihCount', tesbihCount);
+                      showPage(2);
+    			  }
+                 
+                  
+        		} else {
+        		  // Do nothing!
+        		  
+        		}
         }
         
         
@@ -196,8 +188,8 @@ window.onload = function() {
         	buttonTextEl.setAttribute("index", SPECIAL_TESBIH);
         	//buttonTextEl.addEventListener("touchstart", func); 
         	//buttonTextEl.addEventListener("touchend", revert); 
-        	buttonTextEl.addEventListener("mousedown", tesbihClickPressed); 
-        	buttonTextEl.addEventListener("mouseup", tesbihClickReleased); 
+        	buttonTextEl.addEventListener("touchstart", tesbihClickPressed); 
+        	buttonTextEl.addEventListener("touchend", tesbihClickReleased); 
         	
         	myNode.appendChild(buttonTextEl);
         	
@@ -213,7 +205,9 @@ window.onload = function() {
             	buttonTextEl.className = "aad";
             	buttonTextEl.innerText = name;
             	buttonTextEl.setAttribute("index", i);
-            	buttonTextEl.addEventListener("click", tesbihClick); 
+            	//buttonTextEl.addEventListener("click", tesbihClick); 
+            	buttonTextEl.addEventListener("touchstart", tesbihClickPressed); 
+            	buttonTextEl.addEventListener("touchend", tesbihClickReleased); 
             	
             	myNode.appendChild(buttonTextEl);
     		}        	
@@ -261,7 +255,6 @@ window.onload = function() {
                 document.getElementById("settingsBtn").style.display = "block";
                 //document.getElementById("reset2").style.display = "none";
                 //document.getElementById("reset").style.display = "none";
-                
     		}
         	else if( pageNo == 3 ) // add page
     		{
